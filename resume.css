@@ -1,0 +1,222 @@
+/* GENERAL */
+section{
+  width: fit-content;
+  margin: auto;
+}
+figure{
+  margin: auto;
+  margin-left: 17px;
+  margin-right: 17px;
+  position: relative;
+}
+
+details{
+  position: absolute;
+  transition: all 0.3s;
+}
+
+details figcaption{
+  color: #2AD882;
+  font-size: 22px;
+  margin-top: 15px;
+}
+
+.insec{
+  display: flex;
+  margin-top: 60px;
+}
+
+figure img{
+  width: 400px;
+  height: 400px;
+  margin-bottom: 30px;
+  position: relative;
+  object-fit: cover;
+}
+
+figcaption{
+  font-size: 27px;
+  font-weight: bold;
+}
+
+#s1sq1{
+  display: flex;
+}
+
+#s1sq1l{
+  width: 700px;
+  height: 4px;
+  background-color: #2AD882;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 159px;
+  border-radius: 5px;
+}
+
+#sec1{
+  margin-top: 150px;
+}
+
+#sec2{
+  margin-top: 200px;
+}
+
+#sec3{
+  margin-top:200px;
+}
+
+section h1{
+  font-size: 52px;
+  font-weight: bold;
+}
+
+
+
+/*------=MAIN=-----*/
+
+/*selection box*/
+#selection{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  height: 95vh; /* Full window height */
+  width: 200px; /* Set width for sidebar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0,0,0,0.6);
+  padding: 10px 0;
+  z-index: 2000;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  justify-content: center;
+  top: 50%; 
+  transform: translateY(-50%);
+}
+
+#selection:hover{
+  height: 95vh;
+}
+
+#selection button{
+  transition: all 0.3s;
+  text-decoration: none;
+  color: white;
+  background-color:#1F242B;
+  border: #2AD882 2px solid;
+  border-radius: 5px;
+
+  height: 100px;
+  width: 140px;
+  margin: 10px;
+
+  transition: all 0.3s ease;
+  opacity: 1;
+  max-height: 120px;   /* slightly bigger than real height */
+}
+
+/* Hide non-selected buttons when collapsed */
+#selection.collapsed button:not(.selected) {
+  opacity: 0;
+  margin: 0;               /* prevent spacing after collapse */
+  padding: 0;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+#selection.collapsed button:not(.selected) img {
+  height: 0;
+  width: 0;
+}
+
+.selected{
+  background-color: #2AD882 !important;
+}
+
+/* Allow animation when showing all */
+#selection.expanded button {
+  transition: all 0.3s ease;
+  opacity: 1;
+  max-height: 120px;
+}
+
+#selection button:hover{
+  box-sizing:border-box;
+  cursor: pointer;
+  border: solid 4px white;
+  transition: all 0.1s ease;
+}
+
+#selection button img{
+  transition: all 0.3s ease;
+  height: 80px;
+  width: 60px;
+}
+
+/*TOMBOL WISHLIST*/
+.wishlist{
+  background-color:#1F242B;
+  color:white;
+  font-size: 18px;
+  font-family: 'Montserrat';
+  border: #2AD882 2px solid;
+  height: 40px;
+  margin: auto;
+  text-align: center;
+  padding:0 10px 0 10px;
+  transition: all 0.3s;
+}
+
+.wishlist:hover{
+  cursor: pointer;
+  background-color: #2AD882;
+  transition: all 0.3s;
+}
+
+.container>h1{
+  text-align: center;
+  margin-top: 250px;
+  font-size: 40px;
+}
+
+@media (max-width: 1200px) {
+  #selection {
+    position: fixed;
+    top: auto;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 80px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 10px;
+  }
+
+  #selection button {
+    height: 90px;
+    width: 120x;
+    margin: 0 5px;
+  }
+
+  #selection button img {
+    height: 40px;
+    width: 30px;
+  }
+
+  .insec {
+    flex-direction: column;
+  }
+  .insec figure:not(:first-child){
+    margin-left: 20px;
+    margin-top: 100px;
+  }
+  details figcaption{
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  #s1sq1l{
+    display:none;
+  }
+}

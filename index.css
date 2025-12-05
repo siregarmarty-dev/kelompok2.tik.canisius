@@ -1,0 +1,402 @@
+/*------=MAIN=-----*/
+/*section 1*/
+#sec1 {
+  padding: 0;
+  display: flex;
+  padding-left: 200px;
+  width: 100%;
+}
+
+#s1t1 {
+  margin-top: 300px;
+  color: #2AD882;
+  font-weight: bold;
+  font-size: 27px;
+  height: fit-content;
+  float: left;
+}
+
+#sec1 p:nth-of-type(2) {
+  height: fit-content;
+  margin-top: 360px;
+  font-weight: bold;
+  font-size: 92px;
+}
+
+#s1sq1 {
+  background-color: #2AD882;
+  width: 700px;
+  height: 100px;
+  display: flex;
+  flex: left;
+  padding: 4px;
+  transition: all 0.2s;
+}
+
+#s1sq2 {
+  color: white;
+  background-color: #1F242B;
+  width: 85%;
+}
+
+#s1sq2 p {
+  margin-top: 32px;
+  margin-left: 25px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#s1t2 {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: auto;
+  font-weight: none;
+  font-size: 70px;
+  transition: all 0.2s;
+  color: white;
+}
+
+#s1sq1:hover {
+  background-color: white;
+}
+
+#s1sq1:hover #s1t2 {
+  color: #2AD882;
+}
+
+a {
+  text-decoration: none;
+}
+
+#s1sq3 {
+  background-color: #2AD882;
+  width: 33%;
+  height: 925px;
+  padding-top: 9%;
+  overflow: visible;
+  flex: right;
+  margin-left: 18.8%;
+}
+
+#s1img {
+  margin: 0;
+  margin-top: 32px;
+  width: 500px;
+  bottom: 0;
+  float: right;
+  margin-right: 20vw;
+}
+
+#s1img img {
+  height: 893px;
+  width: 670px;
+}
+
+/* section 2 */
+
+#sec2 {
+  display: flex;
+}
+
+#s2sq1 {
+  background-color: #2AD882;
+  width: fit-content;
+  height: 600px;
+  overflow: visible;
+  margin-top: 290px;
+  margin-left: 18%;
+}
+
+#s2img {
+  margin-left: 50px;
+  margin-bottom: 5000px;
+  position: relative;
+  bottom: 50px;
+  width: 400px;
+}
+
+#s2img img {
+  width: 450px;
+  object-fit: cover;
+  height: 600px;
+}
+
+#s2t1 {
+  margin-top: 290px;
+  margin-left: 190px;
+  font-size: 51px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+  padding: 0;
+
+}
+
+#s2t1 p {
+  margin-right: 0;
+}
+
+#s2t1l {
+  width: 370px;
+  height: 4px;
+  background-color: #2AD882;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 159px;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+article {
+  /*bagian buat text lorem panjang itu*/
+  margin-top: 20px;
+  margin-left: 190px;
+  font-size: 23px;
+  max-width: 600px;
+  flex: left;
+  display: flex;
+}
+
+#s2t3 {
+  display: flex;
+  margin-top: 36px;
+}
+
+#s2sq3 {
+  margin-left: 190px;
+  color: black;
+  padding: 3px;
+  width: 230px;
+  background-color: #2AD882;
+  font-size: 23px;
+  text-align: center;
+  float: right;
+  font-weight: bold;
+}
+
+#s2sq4 {
+  margin-left: 190px;
+  color: white;
+  padding: 4px;
+  width: 230px;
+  background-color: #2AD882;
+  font-size: 23px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  flex: left;
+}
+
+#s2sq5 {
+  color: white;
+  width: 900px;
+  background-color: #1F242B;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#s2t3 {
+  display: flex;
+  margin-top: 36px;
+}
+
+
+mark {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#whitebg {
+  background-color: whitesmoke;
+}
+
+#thisPage {
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+  margin-bottom: 0;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+
+  /* ========== SECTION 1 ========== */
+  #sec1 {
+    margin: 0;
+    padding: 0;
+    padding-left: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #s1t1 {
+    margin-top: 150px;
+    color: #2AD882;
+    font-weight: bold;
+    font-size: 17px;
+    height: fit-content;
+    float: left;
+  }
+
+  #sec1 p:nth-of-type(2) {
+    height: fit-content;
+    margin-top: 200px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  #s1sq1 {
+    background-color: #2AD882;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    flex: left;
+    padding: 4px;
+    transition: all 0.2s;
+  }
+
+  #s1sq2 {
+    color: white;
+    background-color: #1F242B;
+    width: 85%;
+  }
+
+  #s1sq2 p {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+  #s1t2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: auto;
+    font-weight: none;
+    font-size: 35px;
+    color: white;
+    transition: all 0.2s;
+  }
+
+  #s1sq3 {
+    background-color: #2AD882;
+    width: 40%;
+    height: 400px;
+    padding-top: 0;
+    justify-self: flex-end;
+    margin-left: 0;
+  }
+
+  #s1img {
+    margin: 0;
+    margin-top: 32px;
+    width: 300px;
+    bottom: 0;
+    float: right;
+  }
+
+  #s1img img {
+    height: 400px;
+    width: 300px;
+  }
+
+  /* ========== SECTION 2 ========== */
+  #sec2 {
+    flex-direction: column;
+  }
+
+  #s2sq1 {
+    height: 600px;
+    overflow: visible;
+    margin-top: 290px;
+    margin-left: 18%;
+  }
+
+  #s2img img {
+    width: 450px;
+    object-fit: cover;
+    height: 600px;
+  }
+
+  #s2t1 { /*yang tentang kami*/
+    margin-top: 290px;
+    margin-left: 90px;
+    font-size: 51px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    padding: 0;
+
+  }
+
+  #s2t1 p {
+    margin-right: 0;
+  }
+
+  #s2t1l {
+    opacity: 0;
+  }
+
+  article {
+    margin-left: 90px;
+  }
+
+  #s2t3 {
+    display: flex;
+    margin-top: 36px;
+  }
+
+  #s2sq3 {
+    margin-left: 190px;
+    color: black;
+    padding: 3px;
+    width: 230px;
+    background-color: #2AD882;
+    font-size: 23px;
+    text-align: center;
+    float: right;
+    font-weight: bold;
+  }
+
+  #s2sq4 {
+    margin-left: 190px;
+    color: white;
+    padding: 4px;
+    width: 230px;
+    background-color: #2AD882;
+    font-size: 23px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    flex: left;
+  }
+
+  #s2sq5 {
+    color: white;
+    width: 900px;
+    background-color: #1F242B;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #s2t3 {
+    display: flex;
+    margin-top: 36px;
+  }
+
+
+  mark {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  #whitebg {
+    background-color: whitesmoke;
+  }
+}
