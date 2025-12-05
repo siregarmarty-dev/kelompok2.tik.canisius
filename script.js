@@ -81,111 +81,126 @@ const peeps = [
         tag: "m4rty_sns",
         profile: "Martyktp.jpeg"
     }
-]; //data anggota kelompok
+];
 
-if(selection){selection.innerHTML = peeps.map((person, index) => `
-    <button id="${index}" onclick="select('${index}')" class="shrinkhide"><img src="${person.profile}">
-    `).join("");}
+// 1. Render tombol selection
+if(selection){
+    selection.innerHTML = peeps.map((person, index) => `
+    <button id="${index}" onclick="select('${index}')" title="${person.name}"><img src="${person.profile}"></button>
+    `).join("");
+}
 
 const buttons = document.querySelectorAll("#selection button");
 
+// 2. Fungsi modifikasi wishlist
 const mod = (n, act = "add") => {
-    const wishlistaddremove = document.querySelector(".wishlist");
+    // Cari tombol di dalam section Gallery
+    const wishlistBtn = document.querySelector("#sec1 .wishlist");
+    
     if (act === "add") {
-        wishlistaddremove.innerText = "Hilangkan dari  wishlist";
-        wishlistaddremove.onclick = () => mod(n, "remove");
-        wishlist.push(n);
-        alert(`${peeps[n].name} added to wishlist!`);
+        if(wishlistBtn) {
+            wishlistBtn.innerText = "Hapus dari wishlist";
+            wishlistBtn.onclick = () => mod(n, "remove");
+            wishlistBtn.style.backgroundColor = "#1F242B";
+            wishlistBtn.style.color = "#2AD882";
+        }
+        if(!wishlist.includes(n)) wishlist.push(n);
+        alert(`${peeps[n].name} ditambahkan ke wishlist!`);
     } else if (act === "remove") {
-        wishlistaddremove.innerText = "Tambahkan ke wishlist";
-        wishlistaddremove.onclick = () => mod(n, "add");
-        wishlist.splice(wishlist.indexOf(n), 1);
-        alert(`${peeps[n].name} removed from wishlist!`);
+        if(wishlistBtn) {
+            wishlistBtn.innerText = "Tambah ke wishlist";
+            wishlistBtn.onclick = () => mod(n, "add");
+            wishlistBtn.style.backgroundColor = "transparent";
+        }
+        const idx = wishlist.indexOf(n);
+        if (idx > -1) wishlist.splice(idx, 1);
+        alert(`${peeps[n].name} dihapus dari wishlist!`);
     }
 
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    console.log("Wishlist:", wishlist);
-} //function buat update wishlist
+}
 
-console.log(buttons);
-
+// 3. Fungsi pilih profil
 const select = (id) => {
     selectedButton = document.getElementById(id);
     const n = parseInt(id);
 
+    // Reset style button
     buttons.forEach(btn => btn.classList.remove("selected"));
-    selectedButton.classList.add("selected");
+    if(selectedButton) selectedButton.classList.add("selected");
 
-    const inside = titles.map((title, index) => `<figure>
-	  				<img src="${peeps[n].img[index]}">
-	  				<figcaption>${title}</figcaption>
-	  				<details open>
-	  					<figcaption>${peeps[n].details[index]}</figcaption>
-	  				</details>
-	  			</figure>`).join("");
-
-    container.innerHTML = `<section id="sec1">
-  			<div id="s1sq1">
-  				<h1>${peeps[n].name}</h1>
-  				<div id="s1sq1l"></div>
-				<button class="wishlist" onclick="mod(${n}, '${wishlist.includes(n) ? 'remove' : 'add'}')">${wishlist.includes(n) ? 'Hilangkan dari wishlist' : 'Tambahkan ke wishlist'}</button>
-  			</div>
-  			<div class="insec">
-	  			${inside}
-  			</div>
-  		</section>`
-} //function buat nampilin isi resume anggota
-
-const sidebarAction = (action) => {
-    if (action === "expand") {
-        selection.classList.remove("collapsed");
-        selection.classList.add("expanded");
-        buttons.forEach(btn => {
-            btn.style.display = "block";
-        });
-        selection.style.height = "95vh";
-
-    } else if (action === "collapse" && selectedButton) {
-        selection.classList.remove("expanded");
-        selection.classList.add("collapsed");
-        selection.style.height = "20vh";
-    }
-} //function buat sidebar expand/collapse
-
-const isiWishlist = wishlist.map(n => `
-            <a href="https://www.instagram.com/${peeps[n].tag}/">
-		  			<div class="s1sq2">
-		  				<img src="${peeps[n].profile}" class="simg">
-		  				<div class="s1sq2sub1">
-		  					<div class="inline">
-		  						<img src="instagraml.png" class="uimg">
-		  						<h3>${peeps[n].longName}</h3>
-		  					</div>
-		  					<p>@${peeps[n].tag}</p>
-		  				</div>
-		  			</div>
-		  		</a>
+    // Generate konten details
+    const inside = titles.map((title, index) => `
+        <figure>
+            <img src="${peeps[n].img[index]}">
+            <figcaption>${title}</figcaption>
+            <details open>
+                <summary>Klik untuk detail</summary>
+                <figcaption>${peeps[n].details[index]}</figcaption>
+            </details>
+        </figure>
     `).join("");
-//isi halaman wishlist
+
+    // Cek status wishlist untuk tombol
+    const isWished = wishlist.includes(n);
+    const btnText = isWished ? "Hapus dari wishlist" : "Tambah ke wishlist";
+    const btnAction = isWished ? "remove" : "add";
+    
+    // Inject HTML
+    container.innerHTML = `
+        <section id="sec1">
+            <div id="s1sq1">
+                <h1>${peeps[n].name}</h1>
+                <button class="wishlist" onclick="mod(${n}, '${btnAction}')">${btnText}</button>
+            </div>
+            <div class="insec">
+                ${inside}
+            </div>
+        </section>
+    `;
+
+    // Scroll sedikit ke atas agar user sadar konten berubah
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 4. Render halaman Wishlist
+const isiWishlist = () => {
+    if (!wishlistContainer) return;
+    
+    if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = "<h2 style='text-align:center; width:100%; color:#888;'>Wishlist anda kosong.</h2>";
+        return;
+    }
+
+    wishlistContainer.innerHTML = wishlist.map(n => `
+        <a href="https://www.instagram.com/${peeps[n].tag}/" target="_blank">
+            <div class="s1sq2">
+                <img src="${peeps[n].profile}" class="simg">
+                <div class="s1sq2sub1">
+                    <div class="inline">
+                        <img src="instagraml.png" class="uimg" onerror="this.style.display='none'"> 
+                        <h3>${peeps[n].name}</h3>
+                    </div>
+                    <p>@${peeps[n].tag}</p>
+                </div>
+            </div>
+        </a>
+    `).join("");
+}
 
 const clearWishlist = () => {
-    wishlist = [];
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    wishlistContainer.innerHTML = "<h2>Your wishlist is empty!</h2>";
-} //function buat clear wishlist
-
-//Event listener dan  initial rendering
-if (selection) {
-    selection.addEventListener("mouseenter", () => sidebarAction("expand"));
-    selection.addEventListener("mouseleave", () => sidebarAction("collapse"));
-}
-if (wishlistContainer) {
-    if (wishlist.length > 0) {
-        wishlistContainer.innerHTML = isiWishlist;
-    } else {
-        wishlistContainer.innerHTML = "<h2>Your wishlist is empty!</h2>";
+    if(confirm("Yakin ingin menghapus semua wishlist?")) {
+        wishlist = [];
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        isiWishlist();
     }
 }
-if(wishlistButton){
-    wishlistButton.addEventListener("click", clearWishlist);
+
+// 5. Inisialisasi
+if (wishlistContainer) isiWishlist();
+if (wishlistButton) wishlistButton.addEventListener("click", clearWishlist);
+
+// Auto-select profil pertama jika di halaman resume
+if (selection && peeps.length > 0) {
+    select('0'); 
 }
